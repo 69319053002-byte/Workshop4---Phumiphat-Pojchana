@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio ของนักศึกษาสาขาคอมพิวเตอร์เกมและแอนิเมชั่น - ผลงานเกม, โมเดล 3 มิติ, แอนิเมชั่น และอื่นๆ">
+    <meta name="keywords" content="Portfolio, Game Developer, 3D Animation, นักศึกษา, เกม, แอนิเมชั่น">
+    <title>Portfolio | นักศึกษาสาขาคอมพิวเตอร์เกมและแอนิเมชั่น</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        thai: ['Noto Sans Thai', 'sans-serif'],
+                        orbitron: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        'neon-purple': '#a855f7',
+                        'neon-cyan': '#22d3ee',
+                        'neon-green': '#4ade80',
+                        'neon-pink': '#f472b6',
+                        'dark-bg': '#0a0a0f',
+                        'dark-card': '#111119',
+                        'dark-card-hover': '#1a1a2e',
+                        'dark-border': '#1e1e30',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow-pulse': 'glow-pulse 2s ease-in-out infinite alternate',
+                        'slide-up': 'slide-up 0.6s ease-out forwards',
+                        'slide-right': 'slide-right 0.6s ease-out forwards',
+                        'typing': 'typing 3.5s steps(30) 1s forwards, blink 0.75s step-end infinite',
+                        'gradient-shift': 'gradient-shift 8s ease infinite',
+                        'particle': 'particle 20s linear infinite',
+                        'skill-fill': 'skill-fill 1.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'glow-pulse': {
+                            '0%': { boxShadow: '0 0 20px rgba(168,85,247,0.3), 0 0 40px rgba(168,85,247,0.1)' },
+                            '100%': { boxShadow: '0 0 30px rgba(34,211,238,0.4), 0 0 60px rgba(34,211,238,0.15)' },
+                        },
+                        'slide-up': {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'slide-right': {
+                            '0%': { opacity: '0', transform: 'translateX(-40px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        'gradient-shift': {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        'particle': {
+                            '0%': { transform: 'translateY(100vh) rotate(0deg)', opacity: '0' },
+                            '10%': { opacity: '1' },
+                            '90%': { opacity: '1' },
+                            '100%': { transform: 'translateY(-100vh) rotate(720deg)', opacity: '0' },
+                        },
+                        'skill-fill': {
+                            '0%': { width: '0%' },
+                            '100%': { width: 'var(--skill-level)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* ========== Custom Styles ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background-color: #0a0a0f;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #a855f7, #22d3ee);
+            border-radius: 10px;
+        }
+
+        /* Grid pattern background */
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(168,85,247,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168,85,247,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Glowing text */
+        .text-glow-purple {
+            text-shadow: 0 0 10px rgba(168,85,247,0.5), 0 0 40px rgba(168,85,247,0.2);
+        }
+        .text-glow-cyan {
+            text-shadow: 0 0 10px rgba(34,211,238,0.5), 0 0 40px rgba(34,211,238,0.2);
+        }
+
+        /* Neon border glow */
+        .neon-border {
+            border: 1px solid rgba(168,85,247,0.2);
+            transition: all 0.4s ease;
+        }
+        .neon-border:hover {
+            border-color: rgba(34,211,238,0.5);
+            box-shadow: 0 0 20px rgba(34,211,238,0.15), inset 0 0 20px rgba(34,211,238,0.05);
+        }
+
+        /* Skill card text contrast boost on hover */
+        #skills .group:hover h3 {
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255,255,255,0.15);
+        }
+        #skills .group:hover .text-gray-500 {
+            color: #a1a1aa;
+            transition: color 0.4s ease;
+        }
+        #skills .group:hover .text-gray-300 {
+            color: #ffffff;
+            transition: color 0.4s ease;
+        }
+        #skills .group:hover .text-neon-purple,
+        #skills .group:hover .text-neon-cyan,
+        #skills .group:hover .text-neon-green,
+        #skills .group:hover .text-neon-pink {
+            filter: brightness(1.3);
+            transition: filter 0.4s ease;
+        }
+        #skills .group:hover .text-sm.font-bold {
+            text-shadow: 0 0 10px currentColor;
+        }
+        #skills .group:hover i.text-gray-500 {
+            color: #d4d4d8;
+            transition: color 0.4s ease;
+        }
+
+        /* Animated gradient border */
+        .gradient-border {
+            position: relative;
+            background: #111119;
+            border-radius: 1rem;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, #a855f7, #22d3ee, #4ade80, #a855f7);
+            background-size: 300% 300%;
+            animation: gradient-shift 8s ease infinite;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .gradient-border:hover::before {
+            opacity: 1;
+        }
+
+        /* Particles */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        /* Hero image frame */
+        .profile-frame {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, #a855f7, #22d3ee, #4ade80);
+            background-size: 200% 200%;
+            animation: gradient-shift 4s ease infinite;
+        }
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #0a0a0f;
+        }
+        .profile-frame::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px dashed rgba(168,85,247,0.3);
+            animation: spin 20s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Skill bar fill animation */
+        .skill-bar-fill {
+            width: 0%;
+            transition: width 1.5s ease-out;
+        }
+        .skill-bar-fill.animated {
+            width: var(--skill-level);
+        }
+
+        /* Timeline */
+        .timeline-line {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #a855f7, #22d3ee, #4ade80);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #a855f7;
+            border: 3px solid #0a0a0f;
+            box-shadow: 0 0 12px rgba(168,85,247,0.5);
+            z-index: 2;
+        }
+
+        /* Section reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Portfolio card image overlay */
+        .portfolio-card .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 30%, rgba(10,10,15,0.95) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .portfolio-card:hover .card-overlay {
+            opacity: 1;
+        }
+        .portfolio-card .card-content {
+            transform: translateY(20px);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+        .portfolio-card:hover .card-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Nav active state */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #a855f7, #22d3ee);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Glowing button */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(168,85,247,0.3), transparent 30%);
+            animation: spin 4s linear infinite;
+        }
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: #111119;
+            border-radius: inherit;
+        }
+        .btn-glow span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navbar glass effect when scrolled */
+        .navbar-scrolled {
+            background: rgba(10, 10, 15, 0.85) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.15) !important;
+        }
+    </style>
+</head>
+<body class="grid-bg">
+
+    <!-- ========== Floating Particles Background ========== -->
+    <div id="particles" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></div>
+
+    <!-- ========== Navigation Bar ========== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-neon-purple to-neon-cyan flex items-center justify-center font-orbitron font-bold text-lg text-white group-hover:shadow-lg group-hover:shadow-neon-purple/30 transition-shadow duration-300">
+                        P
+                    </div>
+                    <span class="font-orbitron font-semibold text-lg tracking-wider bg-gradient-to-r from-neon-purple to-neon-cyan bg-clip-text text-transparent">
+                        PORTFOLIO
+                    </span>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#hero" class="nav-link text-sm font-medium text-gray-300 hover:text-neon-cyan transition-colors duration-300">หน้าแรก</a>
+                    <a href="#skills" class="nav-link text-sm font-medium text-gray-300 hover:text-neon-cyan transition-colors duration-300">ทักษะ</a>
+                    <a href="#experience" class="nav-link text-sm font-medium text-gray-300 hover:text-neon-cyan transition-colors duration-300">ประสบการณ์</a>
+                    <a href="#portfolio" class="nav-link text-sm font-medium text-gray-300 hover:text-neon-cyan transition-colors duration-300">ผลงาน</a>
+                    <a href="#contact" class="nav-link text-sm font-medium text-gray-300 hover:text-neon-cyan transition-colors duration-300">ติดต่อ</a>
+                    <a href="#contact" class="ml-2 px-5 py-2 rounded-full bg-gradient-to-r from-neon-purple to-neon-cyan text-white text-sm font-semibold hover:shadow-lg hover:shadow-neon-purple/30 transition-all duration-300 hover:scale-105">
+                        ติดต่อฉัน
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="md:hidden relative w-10 h-10 flex items-center justify-center rounded-lg border border-dark-border hover:border-neon-purple/50 transition-colors" aria-label="เปิดเมนู">
+                    <div class="flex flex-col gap-1.5 transition-all duration-300" id="hamburger">
+                        <span class="block w-6 h-0.5 bg-gray-300 transition-all duration-300 origin-center"></span>
+                        <span class="block w-6 h-0.5 bg-gray-300 transition-all duration-300"></span>
+                        <span class="block w-4 h-0.5 bg-gray-300 transition-all duration-300 origin-center"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 bottom-0 w-72 bg-dark-bg/95 backdrop-blur-xl border-l border-dark-border z-50 md:hidden">
+            <div class="flex flex-col p-6 pt-20 gap-4">
+                <a href="#hero" class="mobile-link text-lg font-medium text-gray-300 hover:text-neon-cyan transition-colors py-3 border-b border-dark-border">
+                    <i class="fas fa-home mr-3 text-neon-purple"></i>หน้าแรก
+                </a>
+                <a href="#skills" class="mobile-link text-lg font-medium text-gray-300 hover:text-neon-cyan transition-colors py-3 border-b border-dark-border">
+                    <i class="fas fa-code mr-3 text-neon-cyan"></i>ทักษะ
+                </a>
+                <a href="#experience" class="mobile-link text-lg font-medium text-gray-300 hover:text-neon-cyan transition-colors py-3 border-b border-dark-border">
+                    <i class="fas fa-briefcase mr-3 text-neon-green"></i>ประสบการณ์
+                </a>
+                <a href="#portfolio" class="mobile-link text-lg font-medium text-gray-300 hover:text-neon-cyan transition-colors py-3 border-b border-dark-border">
+                    <i class="fas fa-gamepad mr-3 text-neon-pink"></i>ผลงาน
+                </a>
+                <a href="#contact" class="mobile-link text-lg font-medium text-gray-300 hover:text-neon-cyan transition-colors py-3 border-b border-dark-border">
+                    <i class="fas fa-envelope mr-3 text-neon-purple"></i>ติดต่อ
+                </a>
+                <a href="#contact" class="mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-neon-purple to-neon-cyan text-white text-center font-semibold hover:shadow-lg hover:shadow-neon-purple/30 transition-all duration-300">
+                    ติดต่อฉัน
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/60 z-40 hidden md:hidden" aria-hidden="true"></div>
+
+    <!-- ========== Hero Section ========== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Glow Effects -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+            <!-- Text Content -->
+            <div class="order-2 md:order-1 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-purple/10 border border-neon-purple/20 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
+                    <span class="text-sm text-neon-purple font-medium">พร้อมรับโปรเจกต์ใหม่</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                    <span class="text-white">สวัสดี, ผมชื่อ</span><br>
+                    <span class="bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-green bg-clip-text text-transparent font-orbitron tracking-wide">
+                        นายภูมิภัทร พจชนะ
+                    </span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-gray-400 mb-3 font-light">
+                    นักศึกษาแผนกวิชา<span class="text-neon-cyan font-medium">เทคโนโลยีคอมพิวเตอร์</span>
+                </p>
+                <p class="text-base sm:text-lg text-gray-500 mb-8 max-w-lg mx-auto md:mx-0">
+                    สาขาคอมพิวเตอร์เกมและแอนิเมชั่น — หลงใหลในการสร้างสรรค์โลกเสมือนจริง พัฒนาเกม และงานแอนิเมชั่น 3 มิติ ที่น่าตื่นเต้น 🎮
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#portfolio" class="group relative px-8 py-3.5 rounded-full bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-semibold text-lg hover:shadow-xl hover:shadow-neon-purple/25 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                        <i class="fas fa-gamepad"></i>
+                        ดูผลงานของฉัน
+                        <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-3.5 rounded-full border-2 border-neon-purple/40 text-neon-purple font-semibold text-lg hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300 hover:scale-105 text-center">
+                        ติดต่อฉัน
+                    </a>
+                </div>
+
+                <!-- Tech Stack Icons -->
+                <div class="mt-10 flex items-center gap-4 justify-center md:justify-start">
+                    <span class="text-xs text-gray-600 uppercase tracking-widest">Tech Stack</span>
+                    <div class="flex gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-dark-card border border-dark-border flex items-center justify-center text-gray-400 hover:text-neon-purple hover:border-neon-purple/30 transition-all duration-300 cursor-pointer" title="Unity">
+                            <i class="fab fa-unity text-lg"></i>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-dark-card border border-dark-border flex items-center justify-center text-gray-400 hover:text-neon-cyan hover:border-neon-cyan/30 transition-all duration-300 cursor-pointer" title="Blender">
+                            <i class="fas fa-cube text-lg"></i>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-dark-card border border-dark-border flex items-center justify-center text-gray-400 hover:text-neon-green hover:border-neon-green/30 transition-all duration-300 cursor-pointer" title="C#">
+                            <i class="fas fa-code text-lg"></i>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-dark-card border border-dark-border flex items-center justify-center text-gray-400 hover:text-neon-pink hover:border-neon-pink/30 transition-all duration-300 cursor-pointer" title="Unreal Engine">
+                            <i class="fas fa-fire text-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Image -->
+            <div class="order-1 md:order-2 flex justify-center">
+                <div class="relative animate-float">
+                    <div class="profile-frame animate-glow-pulse">
+                        <img src="Phuphakirito.jpg" alt="รูปโปรไฟล์" class="bg-dark-card">
+                    </div>
+                    <!-- Floating badges -->
+                    <div class="absolute -top-4 -right-4 px-3 py-1.5 rounded-full bg-dark-card border border-neon-purple/30 text-sm font-medium text-neon-purple shadow-lg animate-bounce" style="animation-delay: 0.5s;">
+                        <i class="fas fa-gamepad mr-1"></i> Game Dev
+                    </div>
+                    <div class="absolute -bottom-2 -left-4 px-3 py-1.5 rounded-full bg-dark-card border border-neon-cyan/30 text-sm font-medium text-neon-cyan shadow-lg animate-bounce" style="animation-delay: 1s;">
+                        <i class="fas fa-cube mr-1"></i> 3D Artist
+                    </div>
+                    <div class="absolute top-1/2 -right-8 px-3 py-1.5 rounded-full bg-dark-card border border-neon-green/30 text-sm font-medium text-neon-green shadow-lg animate-bounce" style="animation-delay: 1.5s;">
+                        <i class="fas fa-film mr-1"></i> Animator
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 animate-bounce">
+            <span class="text-xs uppercase tracking-widest">เลื่อนลง</span>
+            <i class="fas fa-chevron-down text-neon-purple"></i>
+        </div>
+    </section>
+
+    <!-- ========== Skills Section ========== -->
+    <section id="skills" class="relative py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 text-neon-cyan text-sm font-medium mb-4">
+                    <i class="fas fa-tools mr-2"></i>ความสามารถ
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+                    ทักษะ<span class="bg-gradient-to-r from-neon-purple to-neon-cyan bg-clip-text text-transparent">ของฉัน</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                    ทักษะและเครื่องมือที่ฉันใช้ในการสร้างสรรค์ผลงานเกมและแอนิเมชั่น
+                </p>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+
+                <!-- Game Development -->
+                <div class="reveal gradient-border neon-border rounded-2xl p-6 lg:p-8 bg-dark-card hover:bg-dark-card-hover transition-all duration-500 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon-purple/20 to-neon-purple/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-gamepad text-2xl text-neon-purple"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Game Development</h3>
+                            <p class="text-sm text-gray-500">พัฒนาเกม</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fab fa-unity mr-2 text-gray-500"></i>Unity Engine</span>
+                                <span class="text-sm font-bold text-neon-purple">85%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-purple to-neon-cyan" style="--skill-level: 85%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fas fa-fire mr-2 text-gray-500"></i>Unreal Engine</span>
+                                <span class="text-sm font-bold text-neon-purple">70%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-purple to-neon-cyan" style="--skill-level: 70%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fas fa-puzzle-piece mr-2 text-gray-500"></i>Game Design</span>
+                                <span class="text-sm font-bold text-neon-purple">80%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-purple to-neon-cyan" style="--skill-level: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Modeling & Animation -->
+                <div class="reveal gradient-border neon-border rounded-2xl p-6 lg:p-8 bg-dark-card hover:bg-dark-card-hover transition-all duration-500 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon-cyan/20 to-neon-cyan/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-cube text-2xl text-neon-cyan"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">3D Modeling & Animation</h3>
+                            <p class="text-sm text-gray-500">สร้างโมเดลและแอนิเมชั่น 3 มิติ</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fas fa-cube mr-2 text-gray-500"></i>Blender</span>
+                                <span class="text-sm font-bold text-neon-cyan">90%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-cyan to-neon-green" style="--skill-level: 90%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fas fa-vector-square mr-2 text-gray-500"></i>Autodesk Maya</span>
+                                <span class="text-sm font-bold text-neon-cyan">75%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-cyan to-neon-green" style="--skill-level: 75%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fas fa-film mr-2 text-gray-500"></i>3D Animation</span>
+                                <span class="text-sm font-bold text-neon-cyan">80%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-cyan to-neon-green" style="--skill-level: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Programming -->
+                <div class="reveal gradient-border neon-border rounded-2xl p-6 lg:p-8 bg-dark-card hover:bg-dark-card-hover transition-all duration-500 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon-green/20 to-neon-green/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-code text-2xl text-neon-green"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Programming</h3>
+                            <p class="text-sm text-gray-500">เขียนโปรแกรม</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fas fa-hashtag mr-2 text-gray-500"></i>C# (Unity)</span>
+                                <span class="text-sm font-bold text-neon-green">85%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-green to-neon-cyan" style="--skill-level: 85%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fas fa-copyright mr-2 text-gray-500"></i>C++ (Unreal)</span>
+                                <span class="text-sm font-bold text-neon-green">65%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-green to-neon-cyan" style="--skill-level: 65%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fab fa-python mr-2 text-gray-500"></i>Python</span>
+                                <span class="text-sm font-bold text-neon-green">70%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-green to-neon-cyan" style="--skill-level: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UI/UX & Design Tools -->
+                <div class="reveal gradient-border neon-border rounded-2xl p-6 lg:p-8 bg-dark-card hover:bg-dark-card-hover transition-all duration-500 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon-pink/20 to-neon-pink/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-palette text-2xl text-neon-pink"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">UI/UX & Design</h3>
+                            <p class="text-sm text-gray-500">ออกแบบ UI และ UX</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fab fa-figma mr-2 text-gray-500"></i>Figma</span>
+                                <span class="text-sm font-bold text-neon-pink">80%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-pink to-neon-purple" style="--skill-level: 80%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fas fa-image mr-2 text-gray-500"></i>Adobe Photoshop</span>
+                                <span class="text-sm font-bold text-neon-pink">75%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-pink to-neon-purple" style="--skill-level: 75%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-sm font-medium text-gray-300"><i class="fas fa-bezier-curve mr-2 text-gray-500"></i>Adobe Illustrator</span>
+                                <span class="text-sm font-bold text-neon-pink">70%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-dark-bg rounded-full overflow-hidden">
+                                <div class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-neon-pink to-neon-purple" style="--skill-level: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Experience Section ========== -->
+    <section id="experience" class="relative py-20 md:py-28">
+        <!-- Background accent -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-neon-purple/[0.02] to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-neon-green/10 border border-neon-green/20 text-neon-green text-sm font-medium mb-4">
+                    <i class="fas fa-briefcase mr-2"></i>ประสบการณ์
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+                    ประสบการณ์<span class="bg-gradient-to-r from-neon-cyan to-neon-green bg-clip-text text-transparent">ของฉัน</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                    เส้นทางการเรียนรู้และประสบการณ์ในสายงานเกมและแอนิเมชั่น
+                </p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative max-w-3xl mx-auto">
+                <div class="timeline-line"></div>
+
+                <!-- Item 1 -->
+                <div class="reveal relative pl-14 pb-12">
+                    <div class="timeline-dot" style="top: 6px;"></div>
+                    <div class="neon-border rounded-2xl p-6 bg-dark-card hover:bg-dark-card-hover transition-all duration-500">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <span class="px-3 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-xs font-semibold">2567 - ปัจจุบัน</span>
+                            <span class="px-3 py-1 rounded-full bg-neon-cyan/10 text-neon-cyan text-xs font-semibold">โปรเจกต์จบ</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">
+                            <i class="fas fa-graduation-cap mr-2 text-neon-purple"></i>โปรเจกต์จบการศึกษา
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            พัฒนาเกม Action RPG 3D ด้วย Unity Engine เป็นโปรเจกต์จบการศึกษาระดับ ปวส. ออกแบบ Game Mechanics, สร้างโมเดล 3D ตัวละคร และระบบ AI สำหรับศัตรู
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">Unity</span>
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">C#</span>
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">Blender</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="reveal relative pl-14 pb-12">
+                    <div class="timeline-dot" style="top: 6px; background: #22d3ee;"></div>
+                    <div class="neon-border rounded-2xl p-6 bg-dark-card hover:bg-dark-card-hover transition-all duration-500">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <span class="px-3 py-1 rounded-full bg-neon-cyan/10 text-neon-cyan text-xs font-semibold">2567</span>
+                            <span class="px-3 py-1 rounded-full bg-neon-green/10 text-neon-green text-xs font-semibold">ฝึกงาน</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">
+                            <i class="fas fa-building mr-2 text-neon-cyan"></i>ฝึกงาน — บริษัท XYZ Studio
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            ฝึกงานในตำแหน่ง Junior 3D Artist ทำงานร่วมกับทีมพัฒนาเกม สร้าง 3D Assets, Environment และ Prop สำหรับเกมมือถือ รวมถึงเรียนรู้ Pipeline การทำงานจริงในอุตสาหกรรม
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">Maya</span>
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">Substance Painter</span>
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">Unreal Engine</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="reveal relative pl-14 pb-12">
+                    <div class="timeline-dot" style="top: 6px; background: #4ade80;"></div>
+                    <div class="neon-border rounded-2xl p-6 bg-dark-card hover:bg-dark-card-hover transition-all duration-500">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <span class="px-3 py-1 rounded-full bg-neon-green/10 text-neon-green text-xs font-semibold">2566</span>
+                            <span class="px-3 py-1 rounded-full bg-neon-pink/10 text-neon-pink text-xs font-semibold">แข่งขัน</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">
+                            <i class="fas fa-trophy mr-2 text-neon-green"></i>Game Jam Thailand 2023
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            เข้าร่วมการแข่งขัน Game Jam ระดับประเทศ พัฒนาเกม Puzzle Platformer ภายใน 48 ชั่วโมง ร่วมกับทีม 4 คน ได้รับรางวัลรองชนะเลิศอันดับ 2
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">Unity</span>
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">Team Work</span>
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">Game Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="reveal relative pl-14 pb-4">
+                    <div class="timeline-dot" style="top: 6px; background: #f472b6;"></div>
+                    <div class="neon-border rounded-2xl p-6 bg-dark-card hover:bg-dark-card-hover transition-all duration-500">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <span class="px-3 py-1 rounded-full bg-neon-pink/10 text-neon-pink text-xs font-semibold">2565 - 2567</span>
+                            <span class="px-3 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-xs font-semibold">การศึกษา</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">
+                            <i class="fas fa-school mr-2 text-neon-pink"></i>วิทยาลัยเทคนิค — สาขาคอมพิวเตอร์เกมและแอนิเมชั่น
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            ศึกษาในแผนกวิชาเทคโนโลยีคอมพิวเตอร์ สาขาคอมพิวเตอร์เกมและแอนิเมชั่น เรียนรู้ทั้งด้านการพัฒนาเกม, การสร้างโมเดล 3D, แอนิเมชั่น และการเขียนโปรแกรม
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">Game Dev</span>
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">3D Art</span>
+                            <span class="px-2.5 py-0.5 rounded-md bg-dark-bg text-xs text-gray-400 border border-dark-border">Animation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Portfolio Section ========== -->
+    <section id="portfolio" class="relative py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-neon-pink/10 border border-neon-pink/20 text-neon-pink text-sm font-medium mb-4">
+                    <i class="fas fa-star mr-2"></i>ผลงาน
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+                    ผลงาน<span class="bg-gradient-to-r from-neon-pink to-neon-purple bg-clip-text text-transparent">เด่นของฉัน</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                    รวมผลงานเกม โมเดล 3 มิติ และแอนิเมชั่นที่ฉันภาคภูมิใจ
+                </p>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+                <!-- Project 1 -->
+                <div class="reveal portfolio-card group relative rounded-2xl overflow-hidden neon-border bg-dark-card cursor-pointer">
+                    <div class="aspect-video bg-gradient-to-br from-neon-purple/20 via-dark-card to-neon-cyan/20 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-gamepad text-5xl text-neon-purple/30 group-hover:text-neon-purple/60 transition-colors duration-300"></i>
+                            <p class="text-xs text-gray-600 mt-2">ภาพตัวอย่างเกม</p>
+                        </div>
+                    </div>
+                    <div class="card-overlay flex flex-col justify-end p-5">
+                        <div class="card-content">
+                            <span class="text-xs font-semibold text-neon-purple uppercase tracking-wider">Game Development</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Shadow Realm — เกม Action RPG 3D</h3>
+                            <p class="text-sm text-gray-400 mt-1 line-clamp-2">เกม Action RPG 3 มิติ พัฒนาด้วย Unity Engine พร้อมระบบต่อสู้, ระบบ Inventory และ AI ศัตรู</p>
+                            <div class="flex gap-2 mt-3">
+                                <span class="px-2 py-0.5 rounded-md bg-neon-purple/10 text-neon-purple text-xs">Unity</span>
+                                <span class="px-2 py-0.5 rounded-md bg-neon-cyan/10 text-neon-cyan text-xs">C#</span>
+                                <span class="px-2 py-0.5 rounded-md bg-neon-green/10 text-neon-green text-xs">Blender</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Always visible title bar -->
+                    <div class="p-4 group-hover:opacity-0 transition-opacity duration-300">
+                        <span class="text-xs font-semibold text-neon-purple uppercase tracking-wider">Game Development</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Shadow Realm — เกม Action RPG 3D</h3>
+                    </div>
+                    <a href="#" class="absolute inset-0 z-10" aria-label="ดูโปรเจกต์ Shadow Realm"></a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="reveal portfolio-card group relative rounded-2xl overflow-hidden neon-border bg-dark-card cursor-pointer">
+                    <div class="aspect-video bg-gradient-to-br from-neon-cyan/20 via-dark-card to-neon-green/20 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-cube text-5xl text-neon-cyan/30 group-hover:text-neon-cyan/60 transition-colors duration-300"></i>
+                            <p class="text-xs text-gray-600 mt-2">ภาพโมเดล 3 มิติ</p>
+                        </div>
+                    </div>
+                    <div class="card-overlay flex flex-col justify-end p-5">
+                        <div class="card-content">
+                            <span class="text-xs font-semibold text-neon-cyan uppercase tracking-wider">3D Modeling</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Cyber Knight — โมเดลตัวละคร 3D</h3>
+                            <p class="text-sm text-gray-400 mt-1 line-clamp-2">โมเดลตัวละครสไตล์ Sci-Fi สร้างด้วย Blender พร้อม Rigging และ Texturing ครบชุด</p>
+                            <div class="flex gap-2 mt-3">
+                                <span class="px-2 py-0.5 rounded-md bg-neon-cyan/10 text-neon-cyan text-xs">Blender</span>
+                                <span class="px-2 py-0.5 rounded-md bg-neon-pink/10 text-neon-pink text-xs">Substance</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 group-hover:opacity-0 transition-opacity duration-300">
+                        <span class="text-xs font-semibold text-neon-cyan uppercase tracking-wider">3D Modeling</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Cyber Knight — โมเดลตัวละคร 3D</h3>
+                    </div>
+                    <a href="#" class="absolute inset-0 z-10" aria-label="ดูโปรเจกต์ Cyber Knight"></a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="reveal portfolio-card group relative rounded-2xl overflow-hidden neon-border bg-dark-card cursor-pointer">
+                    <div class="aspect-video bg-gradient-to-br from-neon-green/20 via-dark-card to-neon-purple/20 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-film text-5xl text-neon-green/30 group-hover:text-neon-green/60 transition-colors duration-300"></i>
+                            <p class="text-xs text-gray-600 mt-2">ภาพงานแอนิเมชั่น</p>
+                        </div>
+                    </div>
+                    <div class="card-overlay flex flex-col justify-end p-5">
+                        <div class="card-content">
+                            <span class="text-xs font-semibold text-neon-green uppercase tracking-wider">Animation</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Lost in Time — แอนิเมชั่นสั้น</h3>
+                            <p class="text-sm text-gray-400 mt-1 line-clamp-2">แอนิเมชั่นสั้น 3D ความยาว 2 นาที เล่าเรื่องราวการผจญภัยข้ามเวลา สร้างด้วย Blender</p>
+                            <div class="flex gap-2 mt-3">
+                                <span class="px-2 py-0.5 rounded-md bg-neon-green/10 text-neon-green text-xs">Blender</span>
+                                <span class="px-2 py-0.5 rounded-md bg-neon-purple/10 text-neon-purple text-xs">After Effects</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 group-hover:opacity-0 transition-opacity duration-300">
+                        <span class="text-xs font-semibold text-neon-green uppercase tracking-wider">Animation</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Lost in Time — แอนิเมชั่นสั้น</h3>
+                    </div>
+                    <a href="#" class="absolute inset-0 z-10" aria-label="ดูโปรเจกต์ Lost in Time"></a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="reveal portfolio-card group relative rounded-2xl overflow-hidden neon-border bg-dark-card cursor-pointer">
+                    <div class="aspect-video bg-gradient-to-br from-neon-pink/20 via-dark-card to-neon-cyan/20 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-mobile-alt text-5xl text-neon-pink/30 group-hover:text-neon-pink/60 transition-colors duration-300"></i>
+                            <p class="text-xs text-gray-600 mt-2">ภาพตัวอย่างเกมมือถือ</p>
+                        </div>
+                    </div>
+                    <div class="card-overlay flex flex-col justify-end p-5">
+                        <div class="card-content">
+                            <span class="text-xs font-semibold text-neon-pink uppercase tracking-wider">Mobile Game</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Pixel Dash — เกมมือถือ 2D</h3>
+                            <p class="text-sm text-gray-400 mt-1 line-clamp-2">เกม Endless Runner 2D สไตล์ Pixel Art สำหรับ Android พร้อมระบบ Leaderboard</p>
+                            <div class="flex gap-2 mt-3">
+                                <span class="px-2 py-0.5 rounded-md bg-neon-pink/10 text-neon-pink text-xs">Unity</span>
+                                <span class="px-2 py-0.5 rounded-md bg-neon-purple/10 text-neon-purple text-xs">C#</span>
+                                <span class="px-2 py-0.5 rounded-md bg-neon-cyan/10 text-neon-cyan text-xs">Pixel Art</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 group-hover:opacity-0 transition-opacity duration-300">
+                        <span class="text-xs font-semibold text-neon-pink uppercase tracking-wider">Mobile Game</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Pixel Dash — เกมมือถือ 2D</h3>
+                    </div>
+                    <a href="#" class="absolute inset-0 z-10" aria-label="ดูโปรเจกต์ Pixel Dash"></a>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="reveal portfolio-card group relative rounded-2xl overflow-hidden neon-border bg-dark-card cursor-pointer">
+                    <div class="aspect-video bg-gradient-to-br from-neon-purple/20 via-dark-card to-neon-pink/20 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-mountain text-5xl text-neon-purple/30 group-hover:text-neon-purple/60 transition-colors duration-300"></i>
+                            <p class="text-xs text-gray-600 mt-2">ภาพ Environment 3D</p>
+                        </div>
+                    </div>
+                    <div class="card-overlay flex flex-col justify-end p-5">
+                        <div class="card-content">
+                            <span class="text-xs font-semibold text-neon-purple uppercase tracking-wider">Environment Art</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Mystic Forest — Environment 3D</h3>
+                            <p class="text-sm text-gray-400 mt-1 line-clamp-2">ฉากป่าลึกลับ 3D แบบ Low Poly สำหรับใช้ในเกม สร้างด้วย Blender และ Unity</p>
+                            <div class="flex gap-2 mt-3">
+                                <span class="px-2 py-0.5 rounded-md bg-neon-purple/10 text-neon-purple text-xs">Blender</span>
+                                <span class="px-2 py-0.5 rounded-md bg-neon-green/10 text-neon-green text-xs">Unity</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 group-hover:opacity-0 transition-opacity duration-300">
+                        <span class="text-xs font-semibold text-neon-purple uppercase tracking-wider">Environment Art</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Mystic Forest — Environment 3D</h3>
+                    </div>
+                    <a href="#" class="absolute inset-0 z-10" aria-label="ดูโปรเจกต์ Mystic Forest"></a>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="reveal portfolio-card group relative rounded-2xl overflow-hidden neon-border bg-dark-card cursor-pointer">
+                    <div class="aspect-video bg-gradient-to-br from-neon-cyan/20 via-dark-card to-neon-pink/20 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-palette text-5xl text-neon-cyan/30 group-hover:text-neon-cyan/60 transition-colors duration-300"></i>
+                            <p class="text-xs text-gray-600 mt-2">ภาพงาน UI/UX Design</p>
+                        </div>
+                    </div>
+                    <div class="card-overlay flex flex-col justify-end p-5">
+                        <div class="card-content">
+                            <span class="text-xs font-semibold text-neon-cyan uppercase tracking-wider">UI/UX Design</span>
+                            <h3 class="text-lg font-bold text-white mt-1">GameHub — ออกแบบ UI แอปเกม</h3>
+                            <p class="text-sm text-gray-400 mt-1 line-clamp-2">ออกแบบ User Interface สำหรับแอปพลิเคชันรวมเกม สไตล์ Modern Dark UI ด้วย Figma</p>
+                            <div class="flex gap-2 mt-3">
+                                <span class="px-2 py-0.5 rounded-md bg-neon-cyan/10 text-neon-cyan text-xs">Figma</span>
+                                <span class="px-2 py-0.5 rounded-md bg-neon-pink/10 text-neon-pink text-xs">UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 group-hover:opacity-0 transition-opacity duration-300">
+                        <span class="text-xs font-semibold text-neon-cyan uppercase tracking-wider">UI/UX Design</span>
+                        <h3 class="text-lg font-bold text-white mt-1">GameHub — ออกแบบ UI แอปเกม</h3>
+                    </div>
+                    <a href="#" class="absolute inset-0 z-10" aria-label="ดูโปรเจกต์ GameHub"></a>
+                </div>
+            </div>
+
+            <!-- View More Button -->
+            <div class="text-center mt-12 reveal">
+                <a href="#" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border-2 border-neon-purple/40 text-neon-purple font-semibold text-lg hover:bg-neon-purple/10 hover:border-neon-purple transition-all duration-300 hover:scale-105">
+                    <i class="fas fa-th-large"></i>
+                    ดูผลงานทั้งหมด
+                    <i class="fas fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Contact Section ========== -->
+    <section id="contact" class="relative py-20 md:py-28">
+        <!-- Background accent -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-neon-cyan/[0.02] to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-neon-purple/10 border border-neon-purple/20 text-neon-purple text-sm font-medium mb-4">
+                    <i class="fas fa-paper-plane mr-2"></i>ติดต่อ
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+                    ติดต่อ<span class="bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">ฉัน</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                    สนใจทำงานร่วมกัน หรือมีโปรเจกต์อยากปรึกษา? ติดต่อฉันได้เลย!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+
+                <!-- Contact Info Cards -->
+                <div class="space-y-6">
+                    <div class="reveal neon-border rounded-2xl p-6 bg-dark-card hover:bg-dark-card-hover transition-all duration-500 flex items-center gap-5 group">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon-purple/20 to-neon-purple/5 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-envelope text-xl text-neon-purple"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">อีเมล</h3>
+                            <a href="mailto:phuphakirito@gmail.com" class="text-lg text-white hover:text-neon-cyan transition-colors duration-300">phuphakirito@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="reveal neon-border rounded-2xl p-6 bg-dark-card hover:bg-dark-card-hover transition-all duration-500 flex items-center gap-5 group">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon-cyan/20 to-neon-cyan/5 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-phone-alt text-xl text-neon-cyan"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">เบอร์โทรศัพท์</h3>
+                            <a href="tel:+66969500658" class="text-lg text-white hover:text-neon-cyan transition-colors duration-300">096-950-0658</a>
+                        </div>
+                    </div>
+
+                    <div class="reveal neon-border rounded-2xl p-6 bg-dark-card hover:bg-dark-card-hover transition-all duration-500 flex items-center gap-5 group">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon-green/20 to-neon-green/5 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-map-marker-alt text-xl text-neon-green"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">ที่อยู่</h3>
+                            <p class="text-lg text-white">วิทยาลัยเทคนิคอุบลราชธานี, ประเทศไทย</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="reveal flex gap-4 pt-4">
+                        <a href="#" class="w-12 h-12 rounded-xl bg-dark-card border border-dark-border flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#333] hover:border-[#333] transition-all duration-300 hover:scale-110" title="GitHub" aria-label="GitHub">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-xl bg-dark-card border border-dark-border flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#13aff0] hover:border-[#13aff0] transition-all duration-300 hover:scale-110" title="ArtStation" aria-label="ArtStation">
+                            <i class="fab fa-artstation text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-xl bg-dark-card border border-dark-border flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#0077B5] hover:border-[#0077B5] transition-all duration-300 hover:scale-110" title="LinkedIn" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-xl bg-dark-card border border-dark-border flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#FF0000] hover:border-[#FF0000] transition-all duration-300 hover:scale-110" title="YouTube" aria-label="YouTube">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-xl bg-dark-card border border-dark-border flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-br hover:from-[#833AB4] hover:via-[#FD1D1D] hover:to-[#F77737] hover:border-[#833AB4] transition-all duration-300 hover:scale-110" title="Instagram" aria-label="Instagram">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="reveal neon-border rounded-2xl p-6 lg:p-8 bg-dark-card">
+                    <h3 class="text-xl font-bold text-white mb-6">
+                        <i class="fas fa-comment-dots mr-2 text-neon-purple"></i>ส่งข้อความถึงฉัน
+                    </h3>
+                    <form id="contact-form" class="space-y-5" onsubmit="handleSubmit(event)">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-400 mb-2">ชื่อของคุณ</label>
+                            <input type="text" id="name" name="name" required placeholder="กรอกชื่อ-นามสกุล"
+                                class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-dark-border text-white placeholder-gray-600 focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/30 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-400 mb-2">อีเมล</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com"
+                                class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-dark-border text-white placeholder-gray-600 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan/30 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">หัวข้อ</label>
+                            <input type="text" id="subject" name="subject" required placeholder="เรื่องที่ต้องการติดต่อ"
+                                class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-dark-border text-white placeholder-gray-600 focus:outline-none focus:border-neon-green focus:ring-1 focus:ring-neon-green/30 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-400 mb-2">ข้อความ</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="พิมพ์ข้อความของคุณที่นี่..."
+                                class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-dark-border text-white placeholder-gray-600 focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink/30 transition-all duration-300 resize-none"></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn"
+                            class="w-full py-3.5 rounded-xl bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-semibold text-lg hover:shadow-lg hover:shadow-neon-purple/25 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2">
+                            <i class="fas fa-paper-plane"></i>
+                            ส่งข้อความ
+                        </button>
+                    </form>
+                    <!-- Success Message (hidden by default) -->
+                    <div id="success-msg" class="hidden mt-4 p-4 rounded-xl bg-neon-green/10 border border-neon-green/20 text-neon-green text-center">
+                        <i class="fas fa-check-circle text-2xl mb-2"></i>
+                        <p class="font-semibold">ส่งข้อความเรียบร้อยแล้ว! ขอบคุณครับ/ค่ะ 🎉</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Footer ========== -->
+    <footer class="relative border-t border-dark-border py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-purple to-neon-cyan flex items-center justify-center font-orbitron font-bold text-sm text-white">
+                        P
+                    </div>
+                    <span class="font-orbitron text-sm tracking-wider text-gray-500">PORTFOLIO</span>
+                </div>
+                <p class="text-sm text-gray-600 text-center">
+                    © 2567 นายภูมิภัทร พจชนะ — นักศึกษาสาขาคอมพิวเตอร์เกมและแอนิเมชั่น
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-gray-600 hover:text-neon-purple transition-colors duration-300" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-neon-cyan transition-colors duration-300" aria-label="ArtStation"><i class="fab fa-artstation"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-neon-green transition-colors duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== Back to Top Button ========== -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-neon-purple to-neon-cyan text-white flex items-center justify-center shadow-lg shadow-neon-purple/20 opacity-0 translate-y-4 pointer-events-none transition-all duration-300 z-50 hover:scale-110 hover:shadow-xl hover:shadow-neon-purple/30" aria-label="กลับขึ้นด้านบน">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ========== JavaScript ========== -->
+    <script>
+        // ============================
+        // Particles Background
+        // ============================
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const shapes = ['◆', '◇', '○', '△', '▽', '□', '⬡'];
+            const colors = ['#a855f7', '#22d3ee', '#4ade80', '#f472b6'];
+
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.fontSize = (Math.random() * 14 + 8) + 'px';
+                particle.style.color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDuration = (Math.random() * 25 + 15) + 's';
+                particle.style.animationDelay = (Math.random() * 20) + 's';
+                particle.style.animation = `particle ${Math.random() * 25 + 15}s linear ${Math.random() * 20}s infinite`;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // ============================
+        // Navbar Scroll Effect
+        // ============================
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+
+            // Back to top button
+            if (window.scrollY > 500) {
+                backToTop.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                backToTop.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTop.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                backToTop.classList.remove('opacity-100', 'translate-y-0');
+            }
+
+            // Active nav link
+            updateActiveNav();
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ============================
+        // Active Nav Link on Scroll
+        // ============================
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active', 'text-neon-cyan');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active', 'text-neon-cyan');
+                }
+            });
+        }
+
+        // ============================
+        // Mobile Menu Toggle
+        // ============================
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const hamburger = document.getElementById('hamburger');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let menuOpen = false;
+
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                mobileMenu.classList.add('open');
+                menuOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                // Animate hamburger to X
+                hamburger.children[0].style.transform = 'rotate(45deg) translateY(8px)';
+                hamburger.children[1].style.opacity = '0';
+                hamburger.children[2].style.transform = 'rotate(-45deg) translateY(-8px)';
+                hamburger.children[2].style.width = '24px';
+            } else {
+                mobileMenu.classList.remove('open');
+                menuOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+                // Animate X back to hamburger
+                hamburger.children[0].style.transform = '';
+                hamburger.children[1].style.opacity = '1';
+                hamburger.children[2].style.transform = '';
+                hamburger.children[2].style.width = '16px';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuOpen) toggleMenu();
+            });
+        });
+
+        // ============================
+        // Reveal on Scroll (Intersection Observer)
+        // ============================
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Stagger animation for siblings
+                    const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+                    let delay = 0;
+                    siblings.forEach(sib => {
+                        if (sib === entry.target) {
+                            entry.target.style.transitionDelay = delay + 'ms';
+                        }
+                    });
+                    setTimeout(() => {
+                        entry.target.classList.add('active');
+                    }, 50);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach((el, index) => {
+            el.style.transitionDelay = (index % 4) * 100 + 'ms';
+            revealObserver.observe(el);
+        });
+
+        // ============================
+        // Skill Bar Animation on Scroll
+        // ============================
+        const skillBars = document.querySelectorAll('.skill-bar-fill');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        skillBars.forEach(bar => skillObserver.observe(bar));
+
+        // ============================
+        // Contact Form Handler
+        // ============================
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contact-form');
+            const successMsg = document.getElementById('success-msg');
+            const submitBtn = document.getElementById('submit-btn');
+
+            // Show loading
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> กำลังส่ง...';
+            submitBtn.disabled = true;
+
+            // Simulate send (replace with actual form handler)
+            setTimeout(() => {
+                form.style.display = 'none';
+                successMsg.classList.remove('hidden');
+            }, 1500);
+        }
+
+        // ============================
+        // Smooth reveal for sections on page load
+        // ============================
+        window.addEventListener('load', () => {
+            // Trigger hero animations
+            const heroContent = document.querySelector('#hero .relative.z-10');
+            if (heroContent) {
+                heroContent.style.opacity = '0';
+                heroContent.style.transform = 'translateY(20px)';
+                heroContent.style.transition = 'all 0.8s ease-out';
+                setTimeout(() => {
+                    heroContent.style.opacity = '1';
+                    heroContent.style.transform = 'translateY(0)';
+                }, 200);
+            }
+        });
+
+        // ============================
+        // Cursor Glow Effect (Desktop Only)
+        // ============================
+        if (window.innerWidth > 768) {
+            const cursorGlow = document.createElement('div');
+            cursorGlow.style.cssText = `
+                position: fixed;
+                width: 400px;
+                height: 400px;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1;
+                background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%);
+                transform: translate(-50%, -50%);
+                transition: left 0.3s ease-out, top 0.3s ease-out;
+            `;
+            document.body.appendChild(cursorGlow);
+
+            document.addEventListener('mousemove', (e) => {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            });
+        }
+    </script>
+</body>
+</html>
